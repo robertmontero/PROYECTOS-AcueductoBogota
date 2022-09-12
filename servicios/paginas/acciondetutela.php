@@ -1,89 +1,3 @@
-
-<?php
-
-if(!isset($_SESSION["validarIngreso"])){
-
-	echo '<script>window.location = "index.php?pagina=ingreso";</script>';
-
-	return;
-
-}else{
-
-	if($_SESSION["validarIngreso"] != "ok"){
-
-		echo '<script>window.location = "index.php?pagina=ingreso";</script>';
-
-		return;
-	}
-
-}
-
-$usuarios = ControladorFormularios::ctrSeleccionarRegistros(null, null);
-
-
-?>
-
-
-
-
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th>#</th>
-			<th>Nombre</th>
-			<th>Email</th>
-			<th>Fecha</th>
-			<th>Acciones</th>
-		</tr>
-	</thead>
-
-	<tbody>
-
-	<?php foreach ($usuarios as $key => $value): ?>
-
-		<tr>
-			<td><?php echo ($key+1); ?></td>
-			<td><?php echo $value["nombre"]; ?></td>
-			<td><?php echo $value["email"]; ?></td>
-			<td><?php echo $value["fecha"]; ?></td>
-			<td>
-
-			<div class="btn-group">
-
-				<div class="px-1">
-
-				<a href="index.php?pagina=editar&id=<?php echo $value["id"]; ?>" class="btn btn-warning"><i class="fas fa-pencil-alt"></i></a>
-
-				</div>
-
-				<form method="post">
-
-					<input type="hidden" value="<?php echo $value["id"]; ?>" name="eliminarRegistro">
-
-					<button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-
-					<?php
-
-						$eliminar = new ControladorFormularios();
-						$eliminar -> ctrEliminarRegistro();
-
-					?>
-
-				</form>
-
-			</div>
-
-
-			</td>
-		</tr>
-
-	<?php endforeach ?>
-
-	</tbody>
-</table>
-<!--=====================================
-FORMULARIO DEL USUARIO
-======================================-->
 <div class="p-5 ml-auto bg-primary">
   <form method="post">
     <div class="card-tittle">
@@ -104,17 +18,17 @@ FORMULARIO DEL USUARIO
         </div>
       </p>
       <div class="form-group">
-        <label for="t_dent">Identificacion:</label>
-        <select class="form-control" name="tipo_ident">
-          <option value="CC" selected>Cedula de ciudadania
-            <option value="TI">Tarjeta de identidad
-              <option value="PE">Pasaporte
-                <option value="CE">Cedula extrajera
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="n_ident"></label>
-                <input type="number" class="form-control" id="n_ident" name="num_ident" placeholder="Digite el numero identificacion" required/>
+        <label for="n_ident">Identificacion:</label>
+        <input type="number" class="form-control" id="n_ident" name="num_ident" placeholder="Digite el numero identificacion" required/>
+          </br>
+            <label for="CC">CC</label>
+            <input type="radio" name="tipo_ident" value="CC" id="CC">
+            <label for="TI">TI</label>
+            <input type="radio" name="tipo_ident" value="TI" id="TI">
+            <label for="PE">PE</label>
+            <input type="radio" name="tipo_ident" value="PE" id="PE">
+            <label for="CE">CE</label>
+            <input type="radio" name="tipo_ident" value="CE" id="CE">
               </div>
             </fieldset>
           </br>
@@ -158,29 +72,23 @@ FORMULARIO DEL USUARIO
       </br>
       <fieldset>
         <legend>Cargar documentos</legend>
-        <input type="file" class="form-control-file border" id="file" name="subirfile" multiple>
+      <!-- <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
       </fieldset>
     </br>
 
     <?php
 
-    // $formulario = new ControladorFormularios();
-    // $formulario -> ctrFormulario();
+    $resultado = ControlFormulario::guardar();
 
-    // $resultado = ModeloController::enviar();
-
-    if(isset($_POST["enviar"])){
+    if($resultado == "ok"){
 
       echo '<script>
       if(window.history.replaceState){
         window.history.replaceState( null, null, window.location.href);
       }
-
       </script>';
-
       echo '<div class="alert alert-success">El documento se ha registrado</div>';
     }
-
     ?>
 
     <button type="submit" class="btn btn-success" name="enviar">Enviar</button>

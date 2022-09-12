@@ -6,9 +6,9 @@ class Conexion{
 
 		#PDO("nombre del servidor; nombre de la base de datos", "usuario", "contraseña")
 
-		$link = new PDO("mysql:host=brxbkyuuppya8254xqch-mysql.services.clever-cloud.com;dbname=brxbkyuuppya8254xqch",
-			            "ud51df76som4njvp",
-			            "NLnOCDV1XutyNJh0D1wP");
+		$link = new PDO("mysql:host=localhost;dbname=acueducto",
+			            "root",
+			            "");
 
 		$link->exec("set names utf8");
 

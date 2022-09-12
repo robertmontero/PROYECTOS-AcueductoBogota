@@ -1,5 +1,5 @@
 <div class="p-5 ml-auto bg-primary">
-<form>
+<form method="post">
   <div class="card-tittle">
     <h4>FORMULARIO DE REPARACION DIRECTA</h4>
   </div>
@@ -82,7 +82,7 @@
     // $formulario = new ModeloController();
     // $formulario -> enviar();
 
-    $resultado = ModeloController::enviar();
+   $resultado = ControlFormulario::guardar();
 
     if($resultado == "ok"){
 

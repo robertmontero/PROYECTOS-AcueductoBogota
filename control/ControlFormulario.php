@@ -1,24 +1,21 @@
 <?php
-require_once("modelos/mdlindex.php");
+require_once("repositorios/Repositorio.php");
 
-class ModeloController{
-  private $model;
+class ControlFormulario{
+  private $transfiere;
   public function __construct(){
-    $this->model = new Modelo();
+    $this->transfiere = new Repositorio();
   }
 
-  //mostrar
+  // Metodo para ver Plantilla
   static function index(){
-    require_once ("vistas/plantilla.php");
+    require_once ("servicios/plantilla.php");
   }
 
-  //Guardar
-  static function enviar(){
-
+  // Metodo para Guardar
+  static function guardar(){
     if(isset($_POST["nombres"])){
-
-			$tabla = "denunciantes";
-
+			$tabla = "denuncias";
 			$datos = array("nombres" => $_POST["nombres"],
 				           "apellidos" => $_POST["apellidos"],
 				           "num_ident" => $_POST["num_ident"],
@@ -29,10 +26,8 @@ class ModeloController{
                    "celular" => $_POST["celular"],
 				           "descripcion" => $_POST["descripcion"]);
 
-        $respuesta = Modelo::insertar($tabla, $datos);
-        // header("location:".urlsite);
+        $respuesta = Repositorio::recibir($tabla, $datos);
        return $respuesta;
 		 }
-
   }
 }

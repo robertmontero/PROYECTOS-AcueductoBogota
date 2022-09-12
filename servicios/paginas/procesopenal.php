@@ -1,7 +1,7 @@
 <div class="p-5 ml-auto bg-primary">
-<form>
+<form method="post">
   <div class="card-tittle">
-    <h4>FORMULARIO DE NULIDADES Y RESTABLECIMIENTO</h4>
+    <h4>FORMULARIO DE PROCESO PENAL</h4>
   </div>
   <fieldset>
     <legend>Informacion personal</legend>
@@ -81,7 +81,7 @@
   // $formulario = new ModeloController();
   // $formulario -> enviar();
 
-  $resultado = ModeloController::enviar();
+  $resultado = ControlFormulario::guardar();
 
   if($resultado == "ok"){
 

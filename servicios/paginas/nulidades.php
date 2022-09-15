@@ -1,5 +1,5 @@
 <div class="p-5 ml-auto bg-primary">
-<form>
+<form method="post">
   <div class="card-tittle">
     <h4>FORMULARIO DE NULIDADES Y RESTABLECIMIENTO</h4>
   </div>
@@ -73,16 +73,21 @@
     <fieldset>
       <legend>Cargar documentos</legend>
     <!-- <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
+    </br>
+      <div class="form-check">
+       <label for="nulidades"><strong>Confirme que los datos son correctos!  </strong></label>
+       <input type="checkbox" name="documento" value="Nulidades y restablecimiento" id="nulidades" requiered></br>
+       <label for="estados"><strong>Confirme su solicitud!  </strong></label>
+       <input type="checkbox" name="estado" value="nuevo" id="estados" required>
+     </div>
     </fieldset>
-  </br>
 
   <?php
 
   // $formulario = new ModeloController();
   // $formulario -> enviar();
 
-  $resultado = ModeloController::enviar();
-
+  $resultado = ControlFormulario::guardar();
   if($resultado == "ok"){
 
     echo '<script>

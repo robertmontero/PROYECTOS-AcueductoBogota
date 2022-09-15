@@ -1,7 +1,7 @@
 <div class="p-5 ml-auto bg-primary">
-  <form>
+  <form method="post">
     <div class="card-tittle">
-      <h4>FORMULARIO DE DERECHO DE PETICION</h4>
+      <h4>FORMULARIO DE ACCION DE TUTELA</h4>
     </div>
     <fieldset>
       <legend>Informacion personal</legend>
@@ -72,16 +72,20 @@
       </br>
       <fieldset>
         <legend>Cargar documentos</legend>
-      <!-- <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
+    <!--  <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
+      </br>
+       <div class="form-check">
+        <label for="acciondetutela"><strong>Confirme que los datos son correctos!  </strong></label>
+        <input type="checkbox" name="documento" value="Accion de tutela" id="acciondetutela" requiered></br>
+        <label for="estados"><strong>Confirme su solicitud!  </strong></label>
+        <input type="checkbox" name="estado" value="nuevo" id="estados" required>
+      </div>
       </fieldset>
     </br>
 
     <?php
 
-    // $formulario = new ModeloController();
-    // $formulario -> enviar();
-
-    $resultado = ModeloController::enviar();
+    $resultado = ControlFormulario::guardar();
 
     if($resultado == "ok"){
 
@@ -89,12 +93,9 @@
       if(window.history.replaceState){
         window.history.replaceState( null, null, window.location.href);
       }
-
       </script>';
-
       echo '<div class="alert alert-success">El documento se ha registrado</div>';
     }
-
     ?>
 
     <button type="submit" class="btn btn-success" name="enviar">Enviar</button>

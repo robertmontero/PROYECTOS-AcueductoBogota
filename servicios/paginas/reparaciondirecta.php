@@ -1,10 +1,9 @@
 <div class="p-5 ml-auto bg-primary">
-<form>
+<form method="post">
   <div class="card-tittle">
     <h4>FORMULARIO DE REPARACION DIRECTA</h4>
   </div>
   <fieldset>
-    <fieldset>
       <legend>Informacion personal</legend>
       <p>
         <div class="form-group">
@@ -74,15 +73,21 @@
       <fieldset>
         <legend>Cargar documentos</legend>
       <!-- <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
-      </fieldset>
     </br>
+      <div class="form-check">
+       <label for="directa"><strong>Confirme que los datos son correctos!  </strong></label>
+       <input type="checkbox" name="documento" value="Reparacion directa" id="directa" requiered></br>
+       <label for="estados"><strong>Confirme su solicitud!  </strong></label>
+       <input type="checkbox" name="estado" value="nuevo" id="estados" required>
+     </div>
+    </fieldset>
 
     <?php
 
     // $formulario = new ModeloController();
     // $formulario -> enviar();
 
-    $resultado = ModeloController::enviar();
+   $resultado = ControlFormulario::guardar();
 
     if($resultado == "ok"){
 

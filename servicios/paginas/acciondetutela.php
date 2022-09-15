@@ -72,7 +72,14 @@
       </br>
       <fieldset>
         <legend>Cargar documentos</legend>
-      <!-- <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
+    <!--  <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
+      </br>
+       <div class="form-check">
+        <label for="acciondetutela"><strong>Confirme que los datos son correctos!  </strong></label>
+        <input type="checkbox" name="documento" value="Accion de tutela" id="acciondetutela" requiered></br>
+        <label for="estados"><strong>Confirme su solicitud!  </strong></label>
+        <input type="checkbox" name="estado" value="nuevo" id="estados" required>
+      </div>
       </fieldset>
     </br>
 

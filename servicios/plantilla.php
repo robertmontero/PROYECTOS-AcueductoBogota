@@ -29,12 +29,12 @@
       <div class="card-header">
         <div class="container">
           <section id="logo">
-             <img class="circular" src="vistas/img/logo.png" width="90px"	height="70px" float="left">
+            <a href="https://acueductobogota.000webhostapp.com/aplicacionweb/administrador/index.php?pagina=ingreso"><img class="circular" src="servicios/img/logo.png" width="90px"	height="70px" float="left"></a>
           </section>
       	</div>
       </div>
     	<!--=====================================
-  	BOTONERA DE PAGINAS 
+  	BOTONERA DE PAGINAS
   	======================================-->
     	<div class="container-fluid  bg-light">
     		<div class="container py-3">

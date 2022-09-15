@@ -74,7 +74,8 @@ class Controlador{
 				           "num_ident" => $_POST["actualizarCedula"],
 									 "tipo_ident" => $_POST["actualizarTipo"],
 								   "email" => $_POST["actualizarEmail"],
-							    "descripcion" => $_POST["actualizarDescripcion"]);
+									"documento" => $_POST["actualizarDocumento"],
+									"estado" => $_POST["actualizarEstado"]);
 
 			$respuesta = Modelo::actualizarRegistro($tabla, $datos);
 			return $respuesta;

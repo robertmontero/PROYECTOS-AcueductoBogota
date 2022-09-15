@@ -1,3 +1,6 @@
+<div class="card-tittle text-center">
+	<h5><strong>Login administrador</strong></h5>
+</div>
 <div class="d-flex justify-content-center text-center">
 	<form class="p-5 bg-blue" method="post">
 		<div class="form-group">

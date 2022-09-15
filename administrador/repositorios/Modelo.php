@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexion.php";
+require_once "Conexion.php";
 
 class Modelo{
 
@@ -26,14 +26,14 @@ class Modelo{
 	Leer CRUD -> R
 	=============================================*/
 
-	static public function seleccionarRegistros($tabla, $item, $valor){
-		if($item == null && $valor == null){
+	static public function seleccionarRegistros($tabla, $punto, $solo){
+		if($punto == null && $solo == null){
 			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha FROM $tabla ORDER BY id DESC");
 			$stmt->execute();
 			return $stmt -> fetchAll();
 		}else{
-			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha FROM $tabla WHERE $item = :$item ORDER BY id DESC");
-			$stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt = Conexion::conectar()->prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%Y') AS fecha FROM $tabla WHERE $punto = :$punto ORDER BY id DESC");
+			$stmt->bindParam(":".$punto, $solo, PDO::PARAM_STR);
 			$stmt->execute();
 			return $stmt -> fetch();
 		}
@@ -46,13 +46,14 @@ class Modelo{
 	=============================================*/
 
 	static public function actualizarRegistro($tabla, $datos){
-		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombres=:nombres, apellidos=:apellidos, num_ident=:num_ident, tipo_ident=:tipo_ident, email=:email, descripcion=:descripcion WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombres=:nombres, apellidos=:apellidos, num_ident=:num_ident, tipo_ident=:tipo_ident, email=:email, documento=:documento, estado=:estado WHERE id = :id");
 		$stmt->bindParam(":nombres", $datos["nombres"], PDO::PARAM_STR);
 		$stmt->bindParam(":apellidos", $datos["apellidos"], PDO::PARAM_STR);
 		$stmt->bindParam(":num_ident", $datos["num_ident"], PDO::PARAM_STR);
 		$stmt->bindParam(":tipo_ident", $datos["tipo_ident"], PDO::PARAM_STR);
-		$stmt->bindParam(":email", $datos["tipo_ident"], PDO::PARAM_STR);
-		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
+		$stmt->bindParam(":email", $datos["email"], PDO::PARAM_STR);
+		$stmt->bindParam(":documento", $datos["documento"], PDO::PARAM_STR);
+		$stmt->bindParam(":estado", $datos["estado"], PDO::PARAM_STR);
 		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
 
 		if($stmt->execute()){
@@ -67,9 +68,9 @@ class Modelo{
 	/*=============================================
 	Eliminar CRUD -> D
 	=============================================*/
-	static public function eliminarRegistro($tabla, $valor){
+	static public function eliminarRegistro($tabla, $solo){
 		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
-		$stmt->bindParam(":id", $valor, PDO::PARAM_STR);
+		$stmt->bindParam(":id", $solo, PDO::PARAM_STR);
 		if($stmt->execute()){
 			return "ok";
 		}else{

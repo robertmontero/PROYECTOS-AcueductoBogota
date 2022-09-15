@@ -1,3 +1,6 @@
+<div class="card-tittle text-center">
+	<h5><strong>Registro de administrador</strong></h5>
+</div>
 <div class="d-flex justify-content-center text-center">
 	<form class="p-5 bg-blue" method="post">
 		<div class="form-group">
@@ -57,6 +60,6 @@
 			echo '<div class="alert alert-success">El usuario ha sido registrado</div>';
 		}
 		?>
-		<button type="submit" class="btn btn-primary">Enviar</button>
+		<button type="submit" class="btn btn-light">Enviar</button>
 	</form>
 </div>

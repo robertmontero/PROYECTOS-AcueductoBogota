@@ -1,9 +1,9 @@
 <?php
 
 if(isset($_GET["id"])){
-	$item = "id";
-	$valor = $_GET["id"];
-	$usuario = Controlador::seleccionar($item, $valor);
+	$punto = "id";
+	$solo = $_GET["id"];
+	$denuncia = Controlador::seleccionar($punto, $solo);
 }
 ?>
 
@@ -55,7 +55,7 @@ if(isset($_GET["id"])){
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fas fa-user"></i>
+						<i class="fas fa-at"></i>
 					</span>
 				</div>
 				<input type="text" class="form-control" value="<?php echo $denuncia["email"]; ?>" placeholder="Escriba su email" id="email" name="actualizarEmail">
@@ -65,10 +65,20 @@ if(isset($_GET["id"])){
 			<div class="input-group">
 				<div class="input-group-prepend">
 					<span class="input-group-text">
-						<i class="fas fa-user"></i>
+						<i class="fas fa-folder"></i>
 					</span>
 				</div>
-				<input type="text" class="form-control" value="<?php echo $denuncia["decripcion"]; ?>" placeholder=" Escriba descripcion" id="descripcion" name="actualizarDescripcion">
+				<input type="text" class="form-control" value="<?php echo $denuncia["documento"]; ?>" placeholder=" Escriba descripcion" id="documento" name="actualizarDocumento">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fas fa-check-circle"></i>
+					</span>
+				</div>
+				<input type="text" class="form-control" value="<?php echo $denuncia["estado"]; ?>" placeholder=" Escriba descripcion" id="documento" name="actualizarEstado">
 			</div>
 		</div>
 <?php

@@ -24,7 +24,9 @@ class ControlFormulario{
                    "direccion" => $_POST["direccion"],
 				           "email" => $_POST["email"],
                    "celular" => $_POST["celular"],
-				           "descripcion" => $_POST["descripcion"]);
+				           "descripcion" => $_POST["descripcion"],
+                  "documento" => $_POST["documento"],
+                  "estado" => $_POST["estado"]);
 
         $respuesta = Repositorio::recibir($tabla, $datos);
        return $respuesta;

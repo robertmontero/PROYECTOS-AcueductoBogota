@@ -6,13 +6,13 @@ class Conexion{
 
 		#PDO("nombre del servidor; nombre de la base de datos", "usuario", "contraseña")
 
-		$link = new PDO("mysql:host=localhost;dbname=acueducto",
+		$enlace = new PDO("mysql:host=localhost;dbname=acueducto",
 			            "root",
 			            "");
 
-		$link->exec("set names utf8");
+		$enlace->exec("set names utf8");
 
-		return $link;
+		return $enlace;
 
 	}
 

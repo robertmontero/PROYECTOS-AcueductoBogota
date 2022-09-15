@@ -73,30 +73,36 @@
     <fieldset>
       <legend>Cargar documentos</legend>
     <!-- <input type="file" class="form-control-file border" id="file" name="subirfile" multiple> -->
+    </br>
+      <div class="form-check">
+       <label for="proceso"><strong>Confirme que los datos son correctos!  </strong></label>
+       <input type="checkbox" name="documento" value="Proceso penal" id="proceso" requiered></br>
+       <label for="estados"><strong>Confirme su solicitud!  </strong></label>
+       <input type="checkbox" name="estado" value="nuevo" id="estados" required>
+     </div>
     </fieldset>
-  </br>
 
-  <?php
+   <?php
 
-  // $formulario = new ModeloController();
-  // $formulario -> enviar();
+    // $formulario = new ModeloController();
+    // $formulario -> enviar();
 
-  $resultado = ControlFormulario::guardar();
+    $resultado = ControlFormulario::guardar();
 
-  if($resultado == "ok"){
+    if($resultado == "ok"){
 
-    echo '<script>
-    if(window.history.replaceState){
-      window.history.replaceState( null, null, window.location.href);
+      echo '<script>
+      if(window.history.replaceState){
+        window.history.replaceState( null, null, window.location.href);
+      }
+
+      </script>';
+
+      echo '<div class="alert alert-success">El documento se ha registrado</div>';
     }
 
-    </script>';
+    ?>
 
-    echo '<div class="alert alert-success">El documento se ha registrado</div>';
-  }
-
-  ?>
-
-  <button type="submit" class="btn btn-success" name="enviar">Enviar</button>
-</form>
+    <button type="submit" class="btn btn-success" name="enviar">Enviar</button>
+  </form>
 </div>

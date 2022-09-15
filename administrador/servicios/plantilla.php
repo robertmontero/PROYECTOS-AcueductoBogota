@@ -33,7 +33,7 @@ session_start();
       <div class="card-header">
         <div class="container">
           <section id="logo">
-             <img class="circular" src="vistas/img/logo.png" width="90px"	height="70px" float="left">
+             <a href="https://acueductobogota.000webhostapp.com/aplicacionweb"><img class="circular" src="servicios/img/logo.png" width="90px"	height="70px" float="left"></a>
           </section>
       	</div>
       </div>

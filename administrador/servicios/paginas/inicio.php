@@ -10,7 +10,12 @@ if(!isset($_SESSION["validarIngreso"])){
 }
 $denuncia = Controlador::seleccionar(null, null);
 ?>
-
+<div class="card-tittle">
+	<h2><strong>Bienvenido administrador</strong></h2>
+</div>
+<div class="card-tittle">
+	<h4><strong>Aqui podra ver las denuncias, modificarlas y eliminarlas</strong></h4>
+</div>
 <table class="table table-blue table-hover">
 	<thead class="table-success">
 		<tr>
@@ -20,7 +25,8 @@ $denuncia = Controlador::seleccionar(null, null);
 			<th>Cedula</th>
 			<th>Tipo</th>
 			<th>Email</th>
-			<th>Descripcion</th>
+			<th>Documento</th>
+			<th>Estado</th>
 			<th>Opciones</th>
 		</tr>
 	</thead>
@@ -34,7 +40,8 @@ $denuncia = Controlador::seleccionar(null, null);
 			<td><?php echo $value["num_ident"]; ?></td>
 			<td><?php echo $value["tipo_ident"]; ?></td>
 			<td><?php echo $value["email"]; ?></td>
-			<td><?php echo $value["descripcion"]; ?></td>
+			<td><?php echo $value["documento"]; ?></td>
+			<td><?php echo $value["estado"]; ?></td>
 			<td>
 			<div class="btn-group">
 				<div class="px-1">
